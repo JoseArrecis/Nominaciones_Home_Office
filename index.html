@@ -5,6 +5,109 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Incentivo Home Office</title>
+
+    <style>
+      :root {
+        --color-primary: #4A90E2;   /* Azul moderno */
+        --color-secondary: #50E3C2; /* Verde aqua */
+        --color-accent: #F5A623;    /* Naranja dorado */
+        --color-background: #F4F7F9;/* Gris muy claro */
+        --color-surface: #ffffff;   /* Blanco */
+        --color-text: #2C3E50;      /* Azul gris oscuro */
+        --color-muted: #94A3B8;     /* Gris suave */
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--color-background);
+        color: var(--color-text);
+      }
+
+      header {
+        background-color: var(--color-primary);
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+
+      .container {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        width: 220px;
+        background-color: var(--color-secondary);
+        padding: 20px;
+        color: white;
+      }
+
+      .sidebar h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .sidebar ul li {
+        margin: 12px 0;
+      }
+
+      .sidebar ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .sidebar ul li a:hover {
+        text-decoration: underline;
+      }
+
+      .content {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .card {
+        background: var(--color-surface);
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      }
+
+      .card h3 {
+        margin-top: 0;
+        color: var(--color-primary);
+      }
+
+      button {
+        background-color: var(--color-accent);
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background-color: #d4881c;
+      }
+
+      footer {
+        background-color: var(--color-primary);
+        color: white;
+        text-align: center;
+        padding: 15px;
+        margin-top: auto;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
