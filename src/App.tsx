@@ -280,6 +280,43 @@ export default function App() {
     { id: "n4", candidateId: "u6", projectId: "p4", reason: "Lanzamiento Versión 2.0.4", nominatedByUserId: "u14" },
   ]);
 
+  const [candidates, setCandidates] = useState<{ id: number; name: string; projectId: string }[]>([]);
+  const [activeTab, setActiveTab] = useState<string>("dashboard");
+
+  // Función para votar por un candidato (usa boards en lugar de votes)
+  const voteCandidate = (userId: string, candidateId: string) => {
+    setBoards((prev) => {
+      const userVotes = prev[userId] || [];
+      if (!userVotes.includes(candidateId)) {
+        return { ...prev, [userId]: [...userVotes, candidateId] };
+      }
+      return prev;
+    });
+  };
+
+  // Función para agregar un nuevo candidato
+  const addCandidate = (name: string, projectId: string) => {
+    const newCandidate = { id: candidates.length + 1, name, projectId };
+    setCandidates([...candidates, newCandidate]);
+  };
+
+  // Función para drag & drop en votación
+  const swapCandidates = (
+    fromIndex: number,
+    toIndex: number,
+    candidateList: string[]
+  ): string[] => {
+    const list = [...candidateList];
+    const [moved] = list.splice(fromIndex, 1);
+    list.splice(toIndex, 0, moved);
+    return list;
+  };
+
+  // Función para cambiar de pestaña
+  const switchTab = (tab: string) => {
+    setActiveTab(tab);
+  };
+
   // Estado de votación por jefatura (cada una tiene 3 casillas)
   const jefeUsers = useMemo(() => users.filter((u) => u.role === "Jefatura" || u.role === "Gerente"), [users]);
   const [boards, setBoards] = useState<Record<string, string[]>>(() => {

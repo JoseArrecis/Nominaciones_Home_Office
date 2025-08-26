@@ -8,28 +8,42 @@
 
     <style>
       :root {
-        --color-primary: black;   /* Azul moderno */
-        --color-secondary: #50E3C2; /* Verde aqua */
-        --color-accent: white;    /* Naranja dorado */
-        --color-background: #F4F7F9;/* Gris muy claro */
-        --color-surface: #ffffff;   /* Blanco */
-        --color-text: #2C3E50;      /* Azul gris oscuro */
-        --color-muted: #94A3B8;     /* Gris suave */
+        --color-primary: #121212;     /* Fondo header/footer */
+        --color-secondary: #1E1E1E;   /* Sidebar */
+        --color-accent: #BB86FC;      /* Morado brillante */
+        --color-background: #121212;  /* Fondo general oscuro */
+        --color-surface: #1F1F1F;     /* Tarjetas */
+        --color-text: #EDEDED;        /* Texto principal claro */
+        --color-muted: #9E9E9E;       /* Texto secundario */
+        --color-danger: #FF4C4C;      /* Hover botón */
+      }
+
+      * {
+        transition: all 0.3s ease-in-out;
       }
 
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Segoe UI", sans-serif;
         margin: 0;
         padding: 0;
         background-color: var(--color-background);
         color: var(--color-text);
+        animation: fadeIn 0.8s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
       }
 
       header {
         background-color: var(--color-primary);
-        color: white;
+        color: var(--color-text);
         padding: 15px;
         text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.5);
       }
 
       .container {
@@ -38,15 +52,20 @@
       }
 
       .sidebar {
-        width: 220px;
+        width: 240px;
         background-color: var(--color-secondary);
         padding: 20px;
-        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        box-shadow: 2px 0 8px rgba(0,0,0,0.6);
       }
 
       .sidebar h2 {
-        font-size: 18px;
+        font-size: 20px;
         margin-bottom: 10px;
+        color: var(--color-accent);
+        text-align: center;
       }
 
       .sidebar ul {
@@ -59,31 +78,44 @@
       }
 
       .sidebar ul li a {
-        color: white;
+        display: block;
+        padding: 10px;
+        color: var(--color-text);
         text-decoration: none;
         font-weight: bold;
+        border-radius: 6px;
       }
 
       .sidebar ul li a:hover {
-        text-decoration: underline;
+        background: var(--color-accent);
+        color: black;
+        transform: scale(1.05);
       }
 
       .content {
         flex: 1;
-        padding: 20px;
+        padding: 30px;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       }
 
       .card {
         background: var(--color-surface);
         padding: 20px;
-        margin-bottom: 20px;
         border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        transform: scale(1);
+      }
+
+      .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.8);
       }
 
       .card h3 {
         margin-top: 0;
-        color: var(--color-primary);
+        color: var(--color-accent);
       }
 
       button {
@@ -97,17 +129,21 @@
       }
 
       button:hover {
-        background-color: gray;
+        background-color: var(--color-danger);
+        transform: translateY(-3px);
       }
 
       footer {
         background-color: var(--color-primary);
-        color: white;
+        color: var(--color-muted);
         text-align: center;
         padding: 15px;
         margin-top: auto;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
       }
     </style>
+
   </head>
   <body>
     <div id="root"></div>
